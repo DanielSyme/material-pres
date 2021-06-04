@@ -1,108 +1,61 @@
-import { Box, Button, Container } from "@material-ui/core";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import dark from "react-syntax-highlighter/dist/esm/styles/prism/a11y-dark";
+import { useState } from "react";
+import {
+	FormControl,
+	Select,
+	MenuItem,
+	Box,
+	Typography,
+	Container,
+} from "@material-ui/core";
+import { ButtonExample, TypographyExample } from "./components";
+import logo from "./smallshinelogo.png";
 
 function App() {
-	const codeWidth = 520;
+	const [currentComponent, setCurrentComponent] = useState("button");
 	return (
-		<Container maxWidth="xl">
-			<Box padding={4}>
-				<Box
-					display="flex"
-					justifyContent="space-between"
-					alignItems="center"
-					paddingX={1}
-					paddingY={0}
-					marginBottom={2}
-					bgcolor="grey.200"
-				>
-					<Box display="flex" flex={1} paddingLeft={6}>
-						<Button>Some Button</Button>
-					</Box>
-					<Box width={codeWidth}>
-						<SyntaxHighlighter style={dark} language="javascript">
-							{`
-<Button>
-	Some Button
-</Button>
-							`}
-						</SyntaxHighlighter>
-					</Box>
-				</Box>
-				<Box
-					display="flex"
-					justifyContent="space-between"
-					alignItems="center"
-					paddingX={1}
-					paddingY={0}
-					marginBottom={2}
-					bgcolor="grey.200"
-				>
-					<Box display="flex" flex={1} paddingLeft={6}>
-						<Button variant="contained" color="primary">
-							Some Button
-						</Button>
-					</Box>
-					<Box width={codeWidth}>
-						<SyntaxHighlighter style={dark} language="javascript">
-							{`
-<Button variant="contained" color="primary">
-	Some Button
-</Button>
-							`}
-						</SyntaxHighlighter>
-					</Box>
-				</Box>
-				<Box
-					display="flex"
-					justifyContent="space-between"
-					alignItems="center"
-					paddingX={1}
-					paddingY={0}
-					marginBottom={2}
-					bgcolor="grey.200"
-				>
-					<Box display="flex" flex={1} paddingLeft={6}>
-						<Button variant="outlined" color="secondary">
-							Some Button
-						</Button>
-					</Box>
-					<Box width={codeWidth}>
-						<SyntaxHighlighter style={dark} language="javascript">
-							{`
-<Button variant="outlined" color="secondary">
-	Some Button
-</Button>
-							`}
-						</SyntaxHighlighter>
-					</Box>
-				</Box>
-				<Box
-					display="flex"
-					justifyContent="space-between"
-					alignItems="center"
-					paddingX={1}
-					paddingY={0}
-					marginBottom={2}
-					bgcolor="grey.200"
-				>
-					<Box display="flex" flex={1} paddingLeft={6}>
-						<Button variant="contained" size="large" disabled>
-							Some Button
-						</Button>
-					</Box>
-					<Box width={codeWidth}>
-						<SyntaxHighlighter style={dark} language="javascript">
-							{`
-<Button variant="contained" size="large" disabled>
-	Some Button
-</Button>
-							`}
-						</SyntaxHighlighter>
-					</Box>
-				</Box>
+		<>
+			<Box marginTop={2} marginLeft={2}>
+				<FormControl variant="outlined">
+					<Select
+						id="component-select"
+						value={currentComponent}
+						onChange={(event) =>
+							setCurrentComponent(event.target.value as string)
+						}
+					>
+						<MenuItem value="button">Button</MenuItem>
+						<MenuItem value="typography">Typography</MenuItem>
+					</Select>
+				</FormControl>
 			</Box>
-		</Container>
+			<Container maxWidth="lg">
+				<Box marginTop={4} marginLeft={4} display="flex">
+					<img
+						src={logo}
+						alt="logo"
+						style={{
+							objectFit: "contain",
+							height: "50px",
+							marginRight: "30px",
+							position: "relative",
+							top: "5px",
+						}}
+					/>
+					<Typography
+						variant="h3"
+						style={{
+							fontFamily: "MavenPro",
+							color: "#f47920",
+							textTransform: "capitalize",
+						}}
+					>
+						{currentComponent}
+					</Typography>
+				</Box>
+				{currentComponent === "button" && <ButtonExample />}
+				{currentComponent === "typography" && <TypographyExample />}
+			</Container>
+		</>
 	);
 }
 
