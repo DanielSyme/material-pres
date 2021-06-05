@@ -1,8 +1,13 @@
 import {
 	Accordion,
+	AccordionActions,
 	AccordionDetails,
 	AccordionSummary,
 	Box,
+	Button,
+	Checkbox,
+	Divider,
+	FormControlLabel,
 	makeStyles,
 	Typography,
 } from "@material-ui/core";
@@ -68,7 +73,7 @@ onChange={() =>
 		Test Accordion
 	</Typography>
 </AccordionSummary>
-<AccordionDetails>
+<AccordionDetails className={classes.details}>
 	<Typography align="center">
 		Inner Content!
 	</Typography>
@@ -79,6 +84,72 @@ onChange={() =>
 					</SyntaxHighlighter>
 				</Box>
 			</Box>
+
+			<Box
+				display="flex"
+				justifyContent="space-between"
+				alignItems="center"
+				paddingX={1}
+				paddingY={0}
+				marginBottom={2}
+				bgcolor="grey.200"
+			>
+				<Box display="flex" flex={1} paddingLeft={6}>
+					<Accordion square>
+						<AccordionSummary expandIcon={<ExpandMore />}>
+							<Box display="flex" flexDirection="row">
+								<FormControlLabel
+									aria-label="test"
+									onClick={(event) => event.stopPropagation()}
+									onFocus={(event) => event.stopPropagation()}
+									control={<Checkbox />}
+									label="Test Accordion"
+								/>
+								<img src={logo} alt="logo" className={classes.logo2} />
+							</Box>
+						</AccordionSummary>
+						<AccordionDetails>
+							<Typography>Inner Content!</Typography>
+						</AccordionDetails>
+						<Divider />
+						<AccordionActions>
+							<Button size="small" variant="contained">
+								Save
+							</Button>
+						</AccordionActions>
+					</Accordion>
+				</Box>
+				<Box width={codeWidth}>
+					<SyntaxHighlighter style={dark} language="javascript">
+						{`
+<Accordion square>
+	<AccordionSummary expandIcon={<ExpandMore />}>
+		<Box display="flex" flexDirection="row">
+			<FormControlLabel
+				aria-label="test"
+				onClick={(event) => event.stopPropagation()}
+				onFocus={(event) => event.stopPropagation()}
+				control={<Checkbox />}
+				label="Test Accordion"
+			/>
+			<img src={logo} alt="logo" className={classes.logo2} />
+		</Box>
+	</AccordionSummary>
+	<AccordionDetails>
+		<Typography>Inner Content!</Typography>
+	</AccordionDetails>
+	<Divider />
+	<AccordionActions>
+		<Button size="small" variant="contained">
+			Save
+		</Button>
+	</AccordionActions>
+</Accordion>
+						`}
+					</SyntaxHighlighter>
+				</Box>
+			</Box>
+
 			<Box
 				display="flex"
 				justifyContent="space-between"
@@ -95,7 +166,7 @@ onChange={() =>
 								Test Accordion
 							</Typography>
 						</AccordionSummary>
-						<AccordionDetails className={classes.details}>
+						<AccordionDetails>
 							<Typography>Empty</Typography>
 						</AccordionDetails>
 					</Accordion>
@@ -131,5 +202,11 @@ const useStyles = makeStyles((theme) => ({
 		objectFit: "contain",
 		height: "50px",
 		paddingTop: theme.spacing(1),
+	},
+	logo2: {
+		objectFit: "contain",
+		height: "30px",
+		position: "relative",
+		top: 5,
 	},
 }));
