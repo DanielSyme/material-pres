@@ -55,7 +55,11 @@ export function AccordionExample() {
 					</Accordion>
 				</Box>
 				<Box width={codeWidth}>
-					<SyntaxHighlighter style={dark} language="jsx">
+					<SyntaxHighlighter
+						style={dark}
+						language="jsx"
+						customStyle={{ maxHeight: 800 }}
+					>
 						{`
 
 import { ExpandMore } from "@material-ui/icons";
@@ -123,7 +127,11 @@ onChange={() =>
 					</Accordion>
 				</Box>
 				<Box width={codeWidth}>
-					<SyntaxHighlighter style={dark} language="jsx">
+					<SyntaxHighlighter
+						style={dark}
+						language="jsx"
+						customStyle={{ maxHeight: 800 }}
+					>
 						{`
 import { Bathtub } from "@material-ui/icons";
 ...
@@ -177,7 +185,11 @@ import { Bathtub } from "@material-ui/icons";
 					</Accordion>
 				</Box>
 				<Box width={codeWidth}>
-					<SyntaxHighlighter style={dark} language="jsx">
+					<SyntaxHighlighter
+						style={dark}
+						language="jsx"
+						customStyle={{ maxHeight: 800 }}
+					>
 						{`
 <Accordion elevation={0} disabled={true} expanded={false}>
 	<AccordionSummary expandIcon={<ExpandMore />}>
