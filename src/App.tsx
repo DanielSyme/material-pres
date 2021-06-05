@@ -7,7 +7,11 @@ import {
 	Typography,
 	Container,
 } from "@material-ui/core";
-import { ButtonExample, TypographyExample } from "./components";
+import {
+	AccordionExample,
+	ButtonExample,
+	TypographyExample,
+} from "./components";
 import logo from "./smallshinelogo.png";
 
 function App() {
@@ -25,6 +29,7 @@ function App() {
 					>
 						<MenuItem value="button">Button</MenuItem>
 						<MenuItem value="typography">Typography</MenuItem>
+						<MenuItem value="accordion">Accordion</MenuItem>
 					</Select>
 				</FormControl>
 			</Box>
@@ -54,6 +59,7 @@ function App() {
 				</Box>
 				{currentComponent === "button" && <ButtonExample />}
 				{currentComponent === "typography" && <TypographyExample />}
+				{currentComponent === "accordion" && <AccordionExample />}
 			</Container>
 		</>
 	);

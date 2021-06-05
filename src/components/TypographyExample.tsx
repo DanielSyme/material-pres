@@ -52,6 +52,30 @@ export function TypographyExample() {
 					</SyntaxHighlighter>
 				</Box>
 			</Box>
+			<Box
+				display="flex"
+				justifyContent="space-between"
+				alignItems="center"
+				paddingX={1}
+				paddingY={0}
+				marginBottom={2}
+				bgcolor="grey.200"
+			>
+				<Box display="flex" flex={1} paddingLeft={6}>
+					<Typography variant="h4" color="primary">
+						Some Text
+					</Typography>
+				</Box>
+				<Box width={codeWidth}>
+					<SyntaxHighlighter style={dark} language="javascript">
+						{`
+<Typography variant="h4" color="primary">
+	Some Text
+</Typography>
+							`}
+					</SyntaxHighlighter>
+				</Box>
+			</Box>
 		</Box>
 	);
 }

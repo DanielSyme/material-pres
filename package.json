@@ -4,6 +4,8 @@
 	"private": true,
 	"dependencies": {
 		"@material-ui/core": "4.11.4",
+		"@material-ui/icons": "4.11.2",
+		"@material-ui/pickers": "3.3.10",
 		"@testing-library/jest-dom": "^5.11.4",
 		"@testing-library/react": "^11.1.0",
 		"@testing-library/user-event": "^12.1.10",
@@ -13,6 +15,8 @@
 		"@types/react-dom": "^17.0.0",
 		"codemirror": "5.61.1",
 		"fontsource-roboto": "4.0.0",
+		"formik": "2.2.9",
+		"material-table": "1.69.3",
 		"react": "^17.0.2",
 		"react-codemirror2": "7.2.1",
 		"react-dom": "^17.0.2",
@@ -20,7 +24,8 @@
 		"react-scripts": "4.0.3",
 		"react-syntax-highlighter": "15.4.3",
 		"typescript": "^4.1.2",
-		"web-vitals": "^1.0.1"
+		"web-vitals": "^1.0.1",
+		"yup": "0.32.9"
 	},
 	"scripts": {
 		"start": "react-scripts start",
