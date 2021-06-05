@@ -14,7 +14,7 @@ import {
 import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import dark from "react-syntax-highlighter/dist/esm/styles/prism/a11y-dark";
-import { ExpandMore } from "@material-ui/icons";
+import { Bathtub, ExpandMore } from "@material-ui/icons";
 import logo from "../bigshinelogo.png";
 
 export function AccordionExample() {
@@ -55,8 +55,11 @@ export function AccordionExample() {
 					</Accordion>
 				</Box>
 				<Box width={codeWidth}>
-					<SyntaxHighlighter style={dark} language="javascript">
+					<SyntaxHighlighter style={dark} language="jsx">
 						{`
+
+import { ExpandMore } from "@material-ui/icons";
+...
 const [isAccordionExpanded, setIsAccordionExpanded] = useState(false);
 ...
 <Accordion
@@ -96,7 +99,7 @@ onChange={() =>
 			>
 				<Box display="flex" flex={1} paddingLeft={6}>
 					<Accordion square>
-						<AccordionSummary expandIcon={<ExpandMore />}>
+						<AccordionSummary expandIcon={<Bathtub />}>
 							<Box display="flex" flexDirection="row">
 								<FormControlLabel
 									aria-label="test"
@@ -120,8 +123,10 @@ onChange={() =>
 					</Accordion>
 				</Box>
 				<Box width={codeWidth}>
-					<SyntaxHighlighter style={dark} language="javascript">
+					<SyntaxHighlighter style={dark} language="jsx">
 						{`
+import { Bathtub } from "@material-ui/icons";
+...
 <Accordion square>
 	<AccordionSummary expandIcon={<ExpandMore />}>
 		<Box display="flex" flexDirection="row">
@@ -172,7 +177,7 @@ onChange={() =>
 					</Accordion>
 				</Box>
 				<Box width={codeWidth}>
-					<SyntaxHighlighter style={dark} language="javascript">
+					<SyntaxHighlighter style={dark} language="jsx">
 						{`
 <Accordion elevation={0} disabled={true} expanded={false}>
 	<AccordionSummary expandIcon={<ExpandMore />}>

@@ -19,7 +19,7 @@ export function TypographyExample() {
 					<Typography>Some Text</Typography>
 				</Box>
 				<Box width={codeWidth}>
-					<SyntaxHighlighter style={dark} language="javascript">
+					<SyntaxHighlighter style={dark} language="jsx">
 						{`
 <Typography>
 	Some Text
@@ -43,7 +43,7 @@ export function TypographyExample() {
 					</Typography>
 				</Box>
 				<Box width={codeWidth}>
-					<SyntaxHighlighter style={dark} language="javascript">
+					<SyntaxHighlighter style={dark} language="jsx">
 						{`
 <Typography variant="button" component="div" color="textSecondary">
 	Some Text
@@ -67,7 +67,7 @@ export function TypographyExample() {
 					</Typography>
 				</Box>
 				<Box width={codeWidth}>
-					<SyntaxHighlighter style={dark} language="javascript">
+					<SyntaxHighlighter style={dark} language="jsx">
 						{`
 <Typography variant="h4" color="primary">
 	Some Text

@@ -19,7 +19,7 @@ export function ButtonExample() {
 					<Button>Some Button</Button>
 				</Box>
 				<Box width={codeWidth}>
-					<SyntaxHighlighter style={dark} language="javascript">
+					<SyntaxHighlighter style={dark} language="jsx">
 						{`
 <Button>
 	Some Button
@@ -43,7 +43,7 @@ export function ButtonExample() {
 					</Button>
 				</Box>
 				<Box width={codeWidth}>
-					<SyntaxHighlighter style={dark} language="javascript">
+					<SyntaxHighlighter style={dark} language="jsx">
 						{`
 <Button variant="contained" color="primary">
 	Some Button
@@ -67,7 +67,7 @@ export function ButtonExample() {
 					</Button>
 				</Box>
 				<Box width={codeWidth}>
-					<SyntaxHighlighter style={dark} language="javascript">
+					<SyntaxHighlighter style={dark} language="jsx">
 						{`
 <Button variant="outlined" color="secondary">
 	Some Button
@@ -91,7 +91,7 @@ export function ButtonExample() {
 					</Button>
 				</Box>
 				<Box width={codeWidth}>
-					<SyntaxHighlighter style={dark} language="javascript">
+					<SyntaxHighlighter style={dark} language="jsx">
 						{`
 <Button variant="contained" size="large" disabled>
 	Some Button

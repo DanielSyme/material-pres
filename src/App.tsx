@@ -10,12 +10,13 @@ import {
 import {
 	AccordionExample,
 	ButtonExample,
+	ButtonMenuExample,
 	TypographyExample,
 } from "./components";
 import logo from "./smallshinelogo.png";
 
 function App() {
-	const [currentComponent, setCurrentComponent] = useState("button");
+	const [currentComponent, setCurrentComponent] = useState("typography");
 	return (
 		<>
 			<Box marginTop={2} marginLeft={2}>
@@ -27,8 +28,9 @@ function App() {
 							setCurrentComponent(event.target.value as string)
 						}
 					>
-						<MenuItem value="button">Button</MenuItem>
 						<MenuItem value="typography">Typography</MenuItem>
+						<MenuItem value="button">Button</MenuItem>
+						<MenuItem value="button menu">Button Menu</MenuItem>
 						<MenuItem value="accordion">Accordion</MenuItem>
 					</Select>
 				</FormControl>
@@ -57,8 +59,9 @@ function App() {
 						{currentComponent}
 					</Typography>
 				</Box>
-				{currentComponent === "button" && <ButtonExample />}
 				{currentComponent === "typography" && <TypographyExample />}
+				{currentComponent === "button" && <ButtonExample />}
+				{currentComponent === "button menu" && <ButtonMenuExample />}
 				{currentComponent === "accordion" && <AccordionExample />}
 			</Container>
 		</>
