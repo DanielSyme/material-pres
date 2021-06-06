@@ -13,6 +13,7 @@ import {
 	ButtonMenuExample,
 	FormExample,
 	StylingExample,
+	TransitionsExample,
 	TypographyExample,
 } from "./components";
 import logo from "./smallshinelogo.png";
@@ -38,6 +39,7 @@ function App() {
 						<MenuItem value="accordion">Accordion</MenuItem>
 						<MenuItem value="form">Form</MenuItem>
 						<MenuItem value="styling">Styling</MenuItem>
+						<MenuItem value="transitions">Transitions</MenuItem>
 					</Select>
 				</FormControl>
 			</Box>
@@ -71,6 +73,7 @@ function App() {
 				{currentComponent === "accordion" && <AccordionExample />}
 				{currentComponent === "form" && <FormExample />}
 				{currentComponent === "styling" && <StylingExample />}
+				{currentComponent === "transitions" && <TransitionsExample />}
 			</Container>
 		</MuiPickersUtilsProvider>
 	);
