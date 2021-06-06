@@ -1,72 +1,80 @@
-import { AppBar, FormControl, InputLabel, makeStyles, MenuItem, Select, Typography } from "@material-ui/core";
-import React, { useState } from "react";
-import { Buttons } from "./Buttons";
-import {Link, BrowserRouter as Router, Switch, Route} from "react-router-dom"
-import { Spinners } from "./Spinners";
+import { useState } from "react";
+import {
+	FormControl,
+	Select,
+	MenuItem,
+	Box,
+	Typography,
+	Container,
+} from "@material-ui/core";
+import {
+	AccordionExample,
+	ButtonExample,
+	ButtonMenuExample,
+	FormExample,
+	StylingExample,
+	TypographyExample,
+} from "./components";
+import logo from "./smallshinelogo.png";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import LuxonUtils from "@date-io/luxon";
 
 function App() {
-	const [component, setComponent] = useState('')
-	const buttonPath = "/buttons"
-	const spinnerPath = "/spinners"
-	const classes = useStyles()
+	const [currentComponent, setCurrentComponent] = useState("typography");
 	return (
-		<>
-		<Router>
-		<AppBar position='relative'>
-			<img className={classes.logo}
-			src={require("./images/orange_on_grey.jpeg").default}
-			/>
-		<FormControl className={classes.formControl}>
-		<InputLabel id="demo-simple-select-label">Components</InputLabel>
-		<Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-		  autoWidth
-          value={component}
-          onChange={(event) => {
-			setComponent(event.target.value)
-			
-		  	}
-		  }
-        >
-          <MenuItem value={'Buttons'}><Link to={buttonPath}>Buttons</Link></MenuItem>
-          <MenuItem value={'Spinner'}><Link to={spinnerPath}>Spinner</Link></MenuItem>
-        </Select>
-		</FormControl>
-		  </AppBar>
-		  <Typography 
-		  	variant='h3' 
-		  	align="center">
-			  Material UI Presentation
-			  </Typography>
-		  <Switch>
-			  <Route path={buttonPath}>
-				  <Buttons/>
-				  </Route>
-				  <Route path={spinnerPath}>
-				  <Spinners/>
-				  </Route>
-				  <Route path={"/"} />
-		  </Switch>
-		  </Router>
-		</>
+		<MuiPickersUtilsProvider utils={LuxonUtils}>
+			<Box marginTop={2} marginLeft={2}>
+				<FormControl variant="outlined">
+					<Select
+						id="component-select"
+						value={currentComponent}
+						onChange={(event) =>
+							setCurrentComponent(event.target.value as string)
+						}
+					>
+						<MenuItem value="typography">Typography</MenuItem>
+						<MenuItem value="button">Button</MenuItem>
+						<MenuItem value="button menu">Button Menu</MenuItem>
+						<MenuItem value="accordion">Accordion</MenuItem>
+						<MenuItem value="form">Form</MenuItem>
+						<MenuItem value="styling">Styling</MenuItem>
+					</Select>
+				</FormControl>
+			</Box>
+			<Container maxWidth="lg">
+				<Box marginTop={4} marginLeft={4} display="flex">
+					<img
+						src={logo}
+						alt="logo"
+						style={{
+							objectFit: "contain",
+							height: "50px",
+							marginRight: "30px",
+							position: "relative",
+							top: "5px",
+						}}
+					/>
+					<Typography
+						variant="h3"
+						style={{
+							fontFamily: "MavenPro",
+							color: "#f47920",
+							textTransform: "capitalize",
+						}}
+					>
+						{currentComponent}
+					</Typography>
+				</Box>
+				{currentComponent === "typography" && <TypographyExample />}
+				{currentComponent === "button" && <ButtonExample />}
+				{currentComponent === "button menu" && <ButtonMenuExample />}
+				{currentComponent === "accordion" && <AccordionExample />}
+				{currentComponent === "form" && <FormExample />}
+				{currentComponent === "styling" && <StylingExample />}
+			</Container>
+		</MuiPickersUtilsProvider>
 	);
 }
 
 export default App;
-
-const useStyles = makeStyles((theme) => ({
-	formControl: {
-	  margin: theme.spacing(1),
-	  maxWidth: 120,
-	},
-	selectEmpty: {
-	  marginTop: theme.spacing(2),
-	},
-	logo:{
-		width: "32px",
-		height: "32px",
-		margin: theme.spacing(1,1,1,1)
-	}
-  }));
   
