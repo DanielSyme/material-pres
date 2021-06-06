@@ -14,6 +14,7 @@ import {
 	FormExample,
 	StylingExample,
 	TypographyExample,
+	TableExample,
 } from "./components";
 import logo from "./smallshinelogo.png";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
@@ -38,6 +39,7 @@ function App() {
 						<MenuItem value="accordion">Accordion</MenuItem>
 						<MenuItem value="form">Form</MenuItem>
 						<MenuItem value="styling">Styling</MenuItem>
+						<MenuItem value="table">Table</MenuItem>
 					</Select>
 				</FormControl>
 			</Box>
@@ -71,6 +73,7 @@ function App() {
 				{currentComponent === "accordion" && <AccordionExample />}
 				{currentComponent === "form" && <FormExample />}
 				{currentComponent === "styling" && <StylingExample />}
+				{currentComponent === "table" && <TableExample />}
 			</Container>
 		</MuiPickersUtilsProvider>
 	);
