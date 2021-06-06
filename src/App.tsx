@@ -21,7 +21,6 @@ import {
 import logo from "./smallshinelogo.png";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import LuxonUtils from "@date-io/luxon";
-import Test from "./components/Test";
 
 function App() {
 	const [currentComponent, setCurrentComponent] = useState("typography");
@@ -80,7 +79,7 @@ function App() {
 				{currentComponent === "styling" && <StylingExample />}
 				{currentComponent === "table" && <TableExample />}
 				{currentComponent === "transitions" && <TransitionsExample />}
-				{currentComponent === "responsive" && <Test />}
+				{currentComponent === "responsive" && <ResponsiveExample />}
 			</Container>
 		</MuiPickersUtilsProvider>
 	);

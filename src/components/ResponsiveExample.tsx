@@ -1,21 +1,39 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, makeStyles, Slide, Typography } from "@material-ui/core";
-import { TransitionProps } from "@material-ui/core/transitions/transition";
-import React, { forwardRef, useState } from "react";
+import React from 'react';
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import { Box } from '@material-ui/core';
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import dark from "react-syntax-highlighter/dist/esm/styles/prism/a11y-dark";
 import logo from "../bigshinelogo.png";
 
-const Transition = forwardRef<unknown, TransitionProps & {children?: React.ReactElement }>(
-    (props, ref) => <Slide direction="up" ref={ref} {...props} />)
+const useStyles = makeStyles((theme) => ({
+  cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  cardMedia: {
+    paddingTop: '40%',
+  },
+  cardContent: {
+    flexGrow: 1,
+  },
+}));
+
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export function ResponsiveExample() {
-	const codeWidth = 720;
-    const [open, setOpen] = useState(false)
-    const cards = [1,2,3,4,5,6,7,8]
-    const classes = useStyles()
-	return (
-		<Box padding={4}>
-			<Box
+    const classes = useStyles();
+
+  return (
+    <>
+        <Box
 				display="flex"
 				justifyContent="space-between"
 				alignItems="center"
@@ -24,69 +42,43 @@ export function ResponsiveExample() {
 				marginBottom={2}
 				bgcolor="grey.200"
 			>
-				<Box display="flex" flex={1} paddingLeft={6}>
-                    <Grid container spacing={4}>
-                        {cards.map(card => {
-                            <>
-                            <p>{card}</p>
-                            <Grid item key={card} xs={12}>
-                                <Card className={classes.card}>
-                                    <CardMedia className={classes.logo}
-                                    image="https://source.unsplash.com/random"
-                                    title="Shine Logo"/>
-                                 <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
-                  </CardActions>
-                                </Card>
-                            </Grid> 
-                            </>   
-                        })   
-                        }
-                    </Grid>
-				</Box>
-				<Box width={codeWidth}>
-					<SyntaxHighlighter
+                <Box display="flex" flex={1} pl={2} pt={2} pb={2} pr={2}>
+          <Grid container spacing={4}>
+            {cards.map((card) => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image={logo}
+                    title="Image title"
+                  />
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+          </Box>
+          </Box>
+          <Box pl={4}>
+          <SyntaxHighlighter
 						style={dark}
 						language="jsx"
 						customStyle={{ maxHeight: 800 }}
-					>
-						{`
-<Collapse in={checked}>
-    <Paper elevation={4}>
-        <img src={logo} alt="logo" className={classes.logo} />
-    </Paper>
-</Collapse>
-							`}
-					</SyntaxHighlighter>
-				</Box>
-			</Box>
-		</Box>
-	);
+                        >
+{`<Grid container spacing={4}>
+    {cards.map((card) => (
+        <Grid item key={card} xs={12} sm={6} md={4}>
+            <Card className={classes.card}>
+                <CardMedia
+                    className={classes.cardMedia}
+                    image={logo}
+                    title="Image title"
+                  />
+            </Card>
+        </Grid>
+    ))}
+</Grid>`}
+            </SyntaxHighlighter>	
+                        </Box>
+                        </>
+  );
 }
-
-const useStyles = makeStyles((theme) => ({
-	logo: {
-        paddingTop: '56.25%', // 16:9
-      },
-    card: {
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-      },
-      cardContent: {
-        flexGrow: 1,
-      },
-}));
