@@ -1,4 +1,4 @@
-import { Box, Button, Collapse, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, makeStyles, Paper, Slide, Switch, Toolbar, Typography } from "@material-ui/core";
+import { Box, Button, Collapse, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, makeStyles, Paper, Slide, Switch } from "@material-ui/core";
 import { TransitionProps } from "@material-ui/core/transitions/transition";
 import React, { forwardRef, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";

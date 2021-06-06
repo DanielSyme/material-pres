@@ -5,8 +5,10 @@ import dark from "react-syntax-highlighter/dist/esm/styles/prism/a11y-dark";
 
 export function ButtonMenuExample() {
 	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+	const [anchorEl2, setAnchorEl2] = useState<HTMLButtonElement | null>(null);
 	const codeWidth = 844;
 	const close = () => setAnchorEl(null);
+	const close2 = () => setAnchorEl2(null);
 
 	return (
 		<Box padding={2}>
@@ -101,34 +103,34 @@ export function ButtonMenuExample() {
 					<Box display="flex">
 						<Button
 							variant="contained"
-							aria-owns={anchorEl ? "simple-menu" : undefined}
+							aria-owns={anchorEl2 ? "simple-menu2" : undefined}
 							aria-haspopup="true"
-							onClick={(event) => setAnchorEl(event.currentTarget)}
+							onClick={(event) => setAnchorEl2(event.currentTarget)}
 						>
 							Protected Menu Example
 						</Button>
 						<Menu
-							id="simple-menu"
-							open={!!anchorEl}
-							onClose={close}
-							anchorEl={anchorEl}
+							id="simple-menu2"
+							open={!!anchorEl2}
+							onClose={close2}
+							anchorEl={anchorEl2}
 							anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
 							transformOrigin={{ vertical: "top", horizontal: "center" }}
 							getContentAnchorEl={null}
 						>
-							<MenuItem value="typography" onClick={close}>
+							<MenuItem value="typography" onClick={close2}>
 								Create
 							</MenuItem>
 							<Tooltip title="Unauthorized!" placement="left">
 								<span>
-									<MenuItem value="button" onClick={close} disabled>
+									<MenuItem value="button" onClick={close2} disabled>
 										Update
 									</MenuItem>
 								</span>
 							</Tooltip>
 							<Tooltip title="Unauthorized!" placement="left">
 								<span>
-									<MenuItem value="button menu" onClick={close} disabled>
+									<MenuItem value="button menu" onClick={close2} disabled>
 										Delete
 									</MenuItem>
 								</span>
