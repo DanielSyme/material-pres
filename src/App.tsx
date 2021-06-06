@@ -1,109 +1,72 @@
-import { Box, Button, Container } from "@material-ui/core";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import dark from "react-syntax-highlighter/dist/esm/styles/prism/a11y-dark";
+import { AppBar, FormControl, InputLabel, makeStyles, MenuItem, Select, Typography } from "@material-ui/core";
+import React, { useState } from "react";
+import { Buttons } from "./Buttons";
+import {Link, BrowserRouter as Router, Switch, Route} from "react-router-dom"
+import { Spinners } from "./Spinners";
 
 function App() {
-	const codeWidth = 520;
+	const [component, setComponent] = useState('')
+	const buttonPath = "/buttons"
+	const spinnerPath = "/spinners"
+	const classes = useStyles()
 	return (
-		<Container maxWidth="xl">
-			<Box padding={4}>
-				<Box
-					display="flex"
-					justifyContent="space-between"
-					alignItems="center"
-					paddingX={1}
-					paddingY={0}
-					marginBottom={2}
-					bgcolor="grey.200"
-				>
-					<Box display="flex" flex={1} paddingLeft={6}>
-						<Button>Some Button</Button>
-					</Box>
-					<Box width={codeWidth}>
-						<SyntaxHighlighter style={dark} language="javascript">
-							{`
-<Button>
-	Some Button
-</Button>
-							`}
-						</SyntaxHighlighter>
-					</Box>
-				</Box>
-				<Box
-					display="flex"
-					justifyContent="space-between"
-					alignItems="center"
-					paddingX={1}
-					paddingY={0}
-					marginBottom={2}
-					bgcolor="grey.200"
-				>
-					<Box display="flex" flex={1} paddingLeft={6}>
-						<Button variant="contained" color="primary">
-							Some Button
-						</Button>
-					</Box>
-					<Box width={codeWidth}>
-						<SyntaxHighlighter style={dark} language="javascript">
-							{`
-<Button variant="contained" color="primary">
-	Some Button
-</Button>
-							`}
-						</SyntaxHighlighter>
-					</Box>
-				</Box>
-				<Box
-					display="flex"
-					justifyContent="space-between"
-					alignItems="center"
-					paddingX={1}
-					paddingY={0}
-					marginBottom={2}
-					bgcolor="grey.200"
-				>
-					<Box display="flex" flex={1} paddingLeft={6}>
-						<Button variant="outlined" color="secondary">
-							Some Button
-						</Button>
-					</Box>
-					<Box width={codeWidth}>
-						<SyntaxHighlighter style={dark} language="javascript">
-							{`
-<Button variant="outlined" color="secondary">
-	Some Button
-</Button>
-							`}
-						</SyntaxHighlighter>
-					</Box>
-				</Box>
-				<Box
-					display="flex"
-					justifyContent="space-between"
-					alignItems="center"
-					paddingX={1}
-					paddingY={0}
-					marginBottom={2}
-					bgcolor="grey.200"
-				>
-					<Box display="flex" flex={1} paddingLeft={6}>
-						<Button variant="contained" size="large" disabled>
-							Some Button
-						</Button>
-					</Box>
-					<Box width={codeWidth}>
-						<SyntaxHighlighter style={dark} language="javascript">
-							{`
-<Button variant="contained" size="large" disabled>
-	Some Button
-</Button>
-							`}
-						</SyntaxHighlighter>
-					</Box>
-				</Box>
-			</Box>
-		</Container>
+		<>
+		<Router>
+		<AppBar position='relative'>
+			<img className={classes.logo}
+			src={require("./images/orange_on_grey.jpeg").default}
+			/>
+		<FormControl className={classes.formControl}>
+		<InputLabel id="demo-simple-select-label">Components</InputLabel>
+		<Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+		  autoWidth
+          value={component}
+          onChange={(event) => {
+			setComponent(event.target.value)
+			
+		  	}
+		  }
+        >
+          <MenuItem value={'Buttons'}><Link to={buttonPath}>Buttons</Link></MenuItem>
+          <MenuItem value={'Spinner'}><Link to={spinnerPath}>Spinner</Link></MenuItem>
+        </Select>
+		</FormControl>
+		  </AppBar>
+		  <Typography 
+		  	variant='h3' 
+		  	align="center">
+			  Material UI Presentation
+			  </Typography>
+		  <Switch>
+			  <Route path={buttonPath}>
+				  <Buttons/>
+				  </Route>
+				  <Route path={spinnerPath}>
+				  <Spinners/>
+				  </Route>
+				  <Route path={"/"} />
+		  </Switch>
+		  </Router>
+		</>
 	);
 }
 
 export default App;
+
+const useStyles = makeStyles((theme) => ({
+	formControl: {
+	  margin: theme.spacing(1),
+	  maxWidth: 120,
+	},
+	selectEmpty: {
+	  marginTop: theme.spacing(2),
+	},
+	logo:{
+		width: "32px",
+		height: "32px",
+		margin: theme.spacing(1,1,1,1)
+	}
+  }));
+  
