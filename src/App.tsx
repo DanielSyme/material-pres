@@ -11,14 +11,17 @@ import {
 	AccordionExample,
 	ButtonExample,
 	ButtonMenuExample,
+	FormExample,
 	TypographyExample,
 } from "./components";
 import logo from "./smallshinelogo.png";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import LuxonUtils from "@date-io/luxon";
 
 function App() {
 	const [currentComponent, setCurrentComponent] = useState("typography");
 	return (
-		<>
+		<MuiPickersUtilsProvider utils={LuxonUtils}>
 			<Box marginTop={2} marginLeft={2}>
 				<FormControl variant="outlined">
 					<Select
@@ -32,6 +35,7 @@ function App() {
 						<MenuItem value="button">Button</MenuItem>
 						<MenuItem value="button menu">Button Menu</MenuItem>
 						<MenuItem value="accordion">Accordion</MenuItem>
+						<MenuItem value="form">Form</MenuItem>
 					</Select>
 				</FormControl>
 			</Box>
@@ -63,8 +67,9 @@ function App() {
 				{currentComponent === "button" && <ButtonExample />}
 				{currentComponent === "button menu" && <ButtonMenuExample />}
 				{currentComponent === "accordion" && <AccordionExample />}
+				{currentComponent === "form" && <FormExample />}
 			</Container>
-		</>
+		</MuiPickersUtilsProvider>
 	);
 }
 

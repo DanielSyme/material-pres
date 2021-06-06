@@ -67,13 +67,13 @@ import { ExpandMore } from "@material-ui/icons";
 const [isAccordionExpanded, setIsAccordionExpanded] = useState(false);
 ...
 <Accordion
-elevation={2}
-expanded={isAccordionExpanded}
-onChange={() =>
-	setIsAccordionExpanded(
-		(currentAccordionExpanded) => !currentAccordionExpanded
-	)
-}
+	elevation={2}
+	expanded={isAccordionExpanded}
+	onChange={() =>
+		setIsAccordionExpanded(
+			(currentAccordionExpanded) => !currentAccordionExpanded
+		)
+	}
 >
 <AccordionSummary expandIcon={<ExpandMore />}>
 	<Typography variant="h5" color="textSecondary">
@@ -135,7 +135,7 @@ onChange={() =>
 						{`
 import { Bathtub } from "@material-ui/icons";
 ...
-<Accordion square>
+<Accordion square={true}>
 	<AccordionSummary expandIcon={<ExpandMore />}>
 		<Box display="flex" flexDirection="row">
 			<FormControlLabel
@@ -145,7 +145,7 @@ import { Bathtub } from "@material-ui/icons";
 				control={<Checkbox />}
 				label="Test Accordion"
 			/>
-			<img src={logo} alt="logo" className={classes.logo2} />
+			<img src={logo} alt="logo" className={classes.logo} />
 		</Box>
 	</AccordionSummary>
 	<AccordionDetails>
