@@ -12,6 +12,7 @@ import {
 	ButtonExample,
 	ButtonMenuExample,
 	FormExample,
+	StylingExample,
 	TypographyExample,
 } from "./components";
 import logo from "./smallshinelogo.png";
@@ -36,6 +37,7 @@ function App() {
 						<MenuItem value="button menu">Button Menu</MenuItem>
 						<MenuItem value="accordion">Accordion</MenuItem>
 						<MenuItem value="form">Form</MenuItem>
+						<MenuItem value="styling">Styling</MenuItem>
 					</Select>
 				</FormControl>
 			</Box>
@@ -68,6 +70,7 @@ function App() {
 				{currentComponent === "button menu" && <ButtonMenuExample />}
 				{currentComponent === "accordion" && <AccordionExample />}
 				{currentComponent === "form" && <FormExample />}
+				{currentComponent === "styling" && <StylingExample />}
 			</Container>
 		</MuiPickersUtilsProvider>
 	);
