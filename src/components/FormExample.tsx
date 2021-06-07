@@ -20,7 +20,7 @@ import * as Yup from "yup";
 import { FormikProps, useFormik } from "formik";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import dark from "react-syntax-highlighter/dist/esm/styles/prism/a11y-dark";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { KeyboardDateTimePicker } from "@material-ui/pickers";
 
 interface ExampleFormikProps {
@@ -56,8 +56,8 @@ export function FormExample() {
 				todaysDate: Yup.date()
 					.required("Todays date is required")
 					.typeError("A valid date is required")
-					.min(new Date("June 9, 2021 00:00:00"), "That's not todays date!")
-					.max(new Date("June 9, 2021 23:59:59"), "That's not todays date!"),
+					.min(new Date("June 10, 2021 00:00:00"), "That's not todays date!")
+					.max(new Date("June 10, 2021 23:59:59"), "That's not todays date!"),
 				otherDate: Yup.date()
 					.typeError("Invalid Date Format")
 					.nullable()
@@ -74,6 +74,10 @@ export function FormExample() {
 			validateOnMount: true,
 		}
 	);
+
+	// Wrapping this in useMeo so that it doesn't rerender on every form update,
+	// as this really slowed down typing in fields
+	const formCodeExampleElement = useMemo(() => FormCodeExample(), []);
 
 	return (
 		<Box padding={4}>
@@ -112,6 +116,7 @@ export function FormExample() {
 									}
 								/>
 								<TextField
+									type="number"
 									label="Amount"
 									name="amount"
 									value={formikProps.values.amount}
@@ -243,13 +248,38 @@ export function FormExample() {
 						</form>
 					</Paper>
 				</Box>
-				<Box width={codeWidth}>
-					<SyntaxHighlighter
-						style={dark}
-						language="jsx"
-						customStyle={{ maxHeight: 800 }}
-					>
-						{`
+				<Box width={codeWidth}>{formCodeExampleElement}</Box>
+			</Box>
+			<Dialog
+				open={open}
+				onClose={() => setOpen(false)}
+				aria-labelledby="alert-dialog-form-submitted"
+				aria-describedby="alert-dialog-description"
+			>
+				<DialogTitle id="alert-dialog-title">Form Example</DialogTitle>
+				<DialogContent>
+					<DialogContentText id="alert-dialog-description">
+						Form submitted
+					</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => setOpen(false)} color="primary">
+						OK
+					</Button>
+				</DialogActions>
+			</Dialog>
+		</Box>
+	);
+}
+
+function FormCodeExample() {
+	return (
+		<SyntaxHighlighter
+			style={dark}
+			language="jsx"
+			customStyle={{ maxHeight: 800 }}
+		>
+			{`
 const [open, setOpen] = useState(false);
 const formikProps: FormikProps<ExampleFormikProps> =
 	useFormik<ExampleFormikProps>({
@@ -271,9 +301,9 @@ const formikProps: FormikProps<ExampleFormikProps> =
 			todaysDate: Yup.date()
 				.required("Todays date is required")
 				.typeError("A valid date is required")
-				.min(new Date("June 9, 2021 00:00:00"),
+				.min(new Date("June 10, 2021 00:00:00"),
 					"That's not todays date!")
-				.max(new Date("June 9, 2021 23:59:59"),
+				.max(new Date("June 10, 2021 23:59:59"),
 					"That's not todays date!"),
 			otherDate: Yup.date()
 				.typeError("Invalid Date Format")
@@ -469,28 +499,7 @@ const formikProps: FormikProps<ExampleFormikProps> =
 		</Button>
 	</DialogActions>
 </Dialog>
-							`}
-					</SyntaxHighlighter>
-				</Box>
-			</Box>
-			<Dialog
-				open={open}
-				onClose={() => setOpen(false)}
-				aria-labelledby="alert-dialog-form-submitted"
-				aria-describedby="alert-dialog-description"
-			>
-				<DialogTitle id="alert-dialog-title">Form Example</DialogTitle>
-				<DialogContent>
-					<DialogContentText id="alert-dialog-description">
-						Form submitted
-					</DialogContentText>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={() => setOpen(false)} color="primary">
-						OK
-					</Button>
-				</DialogActions>
-			</Dialog>
-		</Box>
+`}
+		</SyntaxHighlighter>
 	);
 }
