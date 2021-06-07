@@ -5,3 +5,5 @@ export { ButtonMenuExample } from "./ButtonMenuExample";
 export { FormExample } from "./FormExample";
 export { StylingExample } from "./StylingExample";
 export { TableExample } from "./TableExample";
+export { TransitionsExample } from "./TransitionsExample";
+export { ResponsiveExample } from "./ResponsiveExample";
