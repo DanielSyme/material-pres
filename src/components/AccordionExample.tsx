@@ -18,7 +18,6 @@ import { Bathtub, ExpandMore } from "@material-ui/icons";
 import logo from "../bigshinelogo.png";
 
 export function AccordionExample() {
-	// useDraftState
 	const [isAccordionExpanded, setIsAccordionExpanded] = useState(false);
 	const classes = useStyles();
 	const codeWidth = 720;
@@ -45,7 +44,7 @@ export function AccordionExample() {
 					>
 						<AccordionSummary expandIcon={<ExpandMore />}>
 							<Typography variant="h5" color="textSecondary">
-								Test Accordion
+								Some Accordion
 							</Typography>
 						</AccordionSummary>
 						<AccordionDetails className={classes.details}>
@@ -61,7 +60,6 @@ export function AccordionExample() {
 						customStyle={{ maxHeight: 800 }}
 					>
 						{`
-
 import { ExpandMore } from "@material-ui/icons";
 ...
 const [isAccordionExpanded, setIsAccordionExpanded] = useState(false);
@@ -75,17 +73,17 @@ const [isAccordionExpanded, setIsAccordionExpanded] = useState(false);
 		)
 	}
 >
-<AccordionSummary expandIcon={<ExpandMore />}>
-	<Typography variant="h5" color="textSecondary">
-		Test Accordion
-	</Typography>
-</AccordionSummary>
-<AccordionDetails className={classes.details}>
-	<Typography align="center">
-		Inner Content!
-	</Typography>
-	<img src={logo} alt="logo" className={classes.logo} />
-</AccordionDetails>
+	<AccordionSummary expandIcon={<ExpandMore />}>
+		<Typography variant="h5" color="textSecondary">
+			Some Accordion
+		</Typography>
+	</AccordionSummary>
+	<AccordionDetails className={classes.details}>
+		<Typography align="center">
+			Inner Content!
+		</Typography>
+		<img src={logo} alt="logo" className={classes.logo} />
+	</AccordionDetails>
 </Accordion>
 					`}
 					</SyntaxHighlighter>
@@ -106,11 +104,11 @@ const [isAccordionExpanded, setIsAccordionExpanded] = useState(false);
 						<AccordionSummary expandIcon={<Bathtub />}>
 							<Box display="flex" flexDirection="row">
 								<FormControlLabel
-									aria-label="test"
+									aria-label="some-accordion"
 									onClick={(event) => event.stopPropagation()}
 									onFocus={(event) => event.stopPropagation()}
 									control={<Checkbox />}
-									label="Test Accordion"
+									label="Some Accordion"
 								/>
 								<img src={logo} alt="logo" className={classes.logo2} />
 							</Box>
@@ -136,14 +134,14 @@ const [isAccordionExpanded, setIsAccordionExpanded] = useState(false);
 import { Bathtub } from "@material-ui/icons";
 ...
 <Accordion square={true}>
-	<AccordionSummary expandIcon={<ExpandMore />}>
+	<AccordionSummary expandIcon={<Bathtub />}>
 		<Box display="flex" flexDirection="row">
 			<FormControlLabel
-				aria-label="test"
+				aria-label="some-accordion"
 				onClick={(event) => event.stopPropagation()}
 				onFocus={(event) => event.stopPropagation()}
 				control={<Checkbox />}
-				label="Test Accordion"
+				label="Some Accordion"
 			/>
 			<img src={logo} alt="logo" className={classes.logo} />
 		</Box>
@@ -176,7 +174,7 @@ import { Bathtub } from "@material-ui/icons";
 					<Accordion elevation={0} disabled={true} expanded={false}>
 						<AccordionSummary expandIcon={<ExpandMore />}>
 							<Typography variant="h5" color="textSecondary">
-								Test Accordion
+								Some Accordion
 							</Typography>
 						</AccordionSummary>
 						<AccordionDetails>
@@ -194,7 +192,7 @@ import { Bathtub } from "@material-ui/icons";
 <Accordion elevation={0} disabled={true} expanded={false}>
 	<AccordionSummary expandIcon={<ExpandMore />}>
 		<Typography variant="h5" color="textSecondary">
-			Test Accordion
+			Some Accordion
 		</Typography>
 	</AccordionSummary>
 	<AccordionDetails>

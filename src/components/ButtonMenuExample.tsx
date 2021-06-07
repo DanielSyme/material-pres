@@ -40,13 +40,13 @@ export function ButtonMenuExample() {
 							transformOrigin={{ vertical: "top", horizontal: "center" }}
 							getContentAnchorEl={null}
 						>
-							<MenuItem value="typography" onClick={close}>
+							<MenuItem value="create" onClick={close}>
 								Create
 							</MenuItem>
-							<MenuItem value="button" onClick={close}>
+							<MenuItem value="update" onClick={close}>
 								Update
 							</MenuItem>
-							<MenuItem value="button menu" onClick={close}>
+							<MenuItem value="delete" onClick={close}>
 								Delete
 							</MenuItem>
 						</Menu>
@@ -59,6 +59,9 @@ export function ButtonMenuExample() {
 						customStyle={{ maxHeight: 800 }}
 					>
 						{`
+const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+const close = () => setAnchorEl(null);
+...
 <Button
 	variant="contained"
 	aria-owns={anchorEl ? "simple-menu" : undefined}
@@ -74,15 +77,14 @@ export function ButtonMenuExample() {
 	anchorEl={anchorEl}
 	anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
 	transformOrigin={{ vertical: "top", horizontal: "center" }}
-	getContentAnchorEl={null}
 >
-	<MenuItem value="typography" onClick={close}>
+	<MenuItem value="create" onClick={close}>
 		Create
 	</MenuItem>
-	<MenuItem value="button" onClick={close}>
+	<MenuItem value="update" onClick={close}>
 		Update
 	</MenuItem>
-	<MenuItem value="button menu" onClick={close}>
+	<MenuItem value="delete" onClick={close}>
 		Delete
 	</MenuItem>
 </Menu>
@@ -118,19 +120,19 @@ export function ButtonMenuExample() {
 							transformOrigin={{ vertical: "top", horizontal: "center" }}
 							getContentAnchorEl={null}
 						>
-							<MenuItem value="typography" onClick={close2}>
+							<MenuItem value="create" onClick={close2}>
 								Create
 							</MenuItem>
 							<Tooltip title="Unauthorized!" placement="left">
 								<span>
-									<MenuItem value="button" onClick={close2} disabled>
+									<MenuItem value="update" onClick={close2} disabled>
 										Update
 									</MenuItem>
 								</span>
 							</Tooltip>
 							<Tooltip title="Unauthorized!" placement="left">
 								<span>
-									<MenuItem value="button menu" onClick={close2} disabled>
+									<MenuItem value="delete" onClick={close2} disabled>
 										Delete
 									</MenuItem>
 								</span>
@@ -190,7 +192,6 @@ export function ProtectorButtonMenu({
 				anchorEl={anchorEl}
 				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
 				transformOrigin={{ vertical: "top", horizontal: "center" }}
-				getContentAnchorEl={null}
 			>
 				{renderMenuItems(close)}
 			</Menu>
@@ -198,25 +199,8 @@ export function ProtectorButtonMenu({
 	);
 }
 ...
-export function Protector({
-	protects: checkedDocument,
-	children,
-}: {
-	protects: CheckedDocument;
-	children: (isNotAuthorized: boolean) => ReactElement;
-}) {
-	const isNotAuthorized = !isAuthorizedDocument(checkedDocument);
-	return isNotAuthorized ? (
-		<Tooltip title="Unauthorized!">
-			<span>{children(isNotAuthorized)}</span>
-		</Tooltip>
-	) : (
-		children(isNotAuthorized)
-	);
-}
-...
 <ProtectorButtonMenu
-	protects={[mutation]}
+	protects={[createMutation, updateMutation, deleteMutation]}
 	buttonLabel="Protected Menu Example"
 >
 	{(closeMenu) => [
@@ -255,6 +239,23 @@ export function Protector({
 		</Protector>,
 	]}
 </ProtectorButtonMenu>
+...
+export function Protector({
+	protects: checkedDocument,
+	children,
+}: {
+	protects: CheckedDocument;
+	children: (isNotAuthorized: boolean) => ReactElement;
+}) {
+	const isNotAuthorized = !isAuthorizedDocument(checkedDocument);
+	return isNotAuthorized ? (
+		<Tooltip title="Unauthorized!">
+			<span>{children(isNotAuthorized)}</span>
+		</Tooltip>
+	) : (
+		children(isNotAuthorized)
+	);
+}
 							`}
 					</SyntaxHighlighter>
 				</Box>
