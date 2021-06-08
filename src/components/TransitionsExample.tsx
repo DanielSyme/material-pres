@@ -97,12 +97,17 @@ export function TransitionsExample() {
 						customStyle={{ maxHeight: 800 }}
 					>
 						{`
+const Transition = forwardRef<
+	unknown, 
+	TransitionProps & {children?: React.ReactElement }
+>((props, ref) => <Slide direction="up" ref={ref} {...props} />)
+...
 <Dialog 
-fullWidth={true}
-maxWidth={"sm"}
-open={open} 
-onClose={() => setOpen(false)}
-TransitionComponent={Transition}
+	fullWidth={true}
+	maxWidth={"sm"}
+	open={open} 
+	onClose={() => setOpen(false)}
+	TransitionComponent={Transition}
 >
     <DialogTitle>
         Material UI Presentation

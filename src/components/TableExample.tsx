@@ -134,54 +134,54 @@ export function TableExample() {
 					>
 						{`
 <TableContainer component={Paper}>
-<Table size="small" aria-label="table one">
-	<TableHead>
-		<TableRow>
-			<TableCell>Name</TableCell>
-			<TableCell align="right">Price</TableCell>
-			<TableCell align="right">Quantity</TableCell>
-			<TableCell align="right">Sum</TableCell>
-		</TableRow>
-	</TableHead>
-	<TableBody>
-		{tableData.items.map((row) => (
-			<TableRow key={row.name}>
-				<TableCell>{row.name}</TableCell>
-				<TableCell align="right">
-					{row.price}
+	<Table size="small" aria-label="table one">
+		<TableHead>
+			<TableRow>
+				<TableCell>Name</TableCell>
+				<TableCell align="right">Price</TableCell>
+				<TableCell align="right">Quantity</TableCell>
+				<TableCell align="right">Sum</TableCell>
+			</TableRow>
+		</TableHead>
+		<TableBody>
+			{tableData.items.map((row) => (
+				<TableRow key={row.name}>
+					<TableCell>{row.name}</TableCell>
+					<TableCell align="right">
+						{row.price}
+					</TableCell>
+					<TableCell align="right">
+						{row.quantity}
+					</TableCell>
+					<TableCell align="right">
+						{row.total}
+					</TableCell>
+				</TableRow>
+			))}
+			<TableRow key="total">
+				<TableCell
+					component="th"
+					scope="row"
+					colSpan={3}
+					align="right"
+				>
+					Total
 				</TableCell>
-				<TableCell align="right">
-					{row.quantity}
-				</TableCell>
-				<TableCell align="right">
-					{row.total}
+				<TableCell component="th" scope="row">
+					{tableData.total}
 				</TableCell>
 			</TableRow>
-		))}
-		<TableRow key="total">
-			<TableCell
-				component="th"
-				scope="row"
-				colSpan={3}
-				align="right"
-			>
-				Total
-			</TableCell>
-			<TableCell component="th" scope="row">
-				{tableData.total}
-			</TableCell>
-		</TableRow>
-	</TableBody>
-</Table>
-<TablePagination
-	rowsPerPageOptions={[4, 8, 16]}
-	component="div"
-	count={200}
-	rowsPerPage={4}
-	page={0}
-	onChangePage={onChangePage}
-	onChangeRowsPerPage={onChangeRowsPerPage}
-/>
+		</TableBody>
+	</Table>
+	<TablePagination
+		rowsPerPageOptions={[4, 8, 16]}
+		component="div"
+		count={200}
+		rowsPerPage={4}
+		page={0}
+		onChangePage={onChangePage}
+		onChangeRowsPerPage={onChangeRowsPerPage}
+	/>
 </TableContainer>
 ...
 const tableData = {

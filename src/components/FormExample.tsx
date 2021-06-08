@@ -347,6 +347,7 @@ const formikProps: FormikProps<ExampleFormikProps> =
 				}
 			/>
 			<TextField
+				type="number"
 				label="Amount"
 				name="amount"
 				value={formikProps.values.amount}
