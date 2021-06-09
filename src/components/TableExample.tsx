@@ -109,7 +109,7 @@ export function TableExample() {
 									>
 										Total
 									</TableCell>
-									<TableCell component="th" scope="row">
+									<TableCell component="th" scope="row" align="right">
 										{tableData.total}
 									</TableCell>
 								</TableRow>
